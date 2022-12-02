@@ -1,2 +1,8 @@
 <script setup lang="ts"></script>
-<template></template>
+<template>
+  <HeroSection></HeroSection>
+  <DealsSection></DealsSection>
+  <CategorySection></CategorySection>
+  <TrendingSection></TrendingSection>
+  <PerksSection></PerksSection>
+</template>
