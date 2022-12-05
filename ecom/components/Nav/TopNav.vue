@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useProductsStore } from "~~/store/ProductStore";
+import { useCartStore } from "~/store/CartStore";
 const user = useSupabaseUser();
 const client = useSupabaseAuthClient();
 
@@ -16,8 +16,7 @@ const toggle = () => {
     menuOpen.value = !menuOpen.value;
   }
 };
-const store = useProductsStore();
-console.log(store);
+const cart = useCartStore();
 </script>
 
 <template>
@@ -155,7 +154,7 @@ console.log(store);
               <Icon name="heroicons:shopping-cart" class="h-8 w-8" />
               <span
                 class="absolute bg-red-500 w-5 h-5 rounded-full text-sm right-0 top-0 text-center"
-                >9</span
+                >{{ cart.totalItems }}</span
               >
             </NuxtLink>
 

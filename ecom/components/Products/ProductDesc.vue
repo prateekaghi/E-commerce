@@ -1,5 +1,8 @@
 <script setup>
+import { useCartStore } from "~/store/CartStore";
 const { product } = defineProps(["product"]);
+
+const cart = useCartStore();
 </script>
 
 <template>
@@ -194,7 +197,7 @@ const { product } = defineProps(["product"]);
         <section aria-labelledby="options-heading">
           <h2 id="options-heading" class="sr-only">Product options</h2>
 
-          <form>
+          <form @submit.prevent="cart.addToCart">
             <div class="sm:flex sm:justify-between">
               <!-- Size selector -->
             </div>
