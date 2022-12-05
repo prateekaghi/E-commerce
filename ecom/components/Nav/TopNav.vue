@@ -150,9 +150,13 @@ console.log(store);
             <NuxtLink
               to="/view-cart"
               type="button"
-              class="flex-shrink-0 rounded-full p-1 text-white hover:text-blue-500"
+              class="relative flex-shrink-0 rounded-full p-1 text-white hover:text-blue-500"
             >
               <Icon name="heroicons:shopping-cart" class="h-8 w-8" />
+              <span
+                class="absolute bg-red-500 w-5 h-5 rounded-full text-sm right-0 top-0 text-center"
+                >9</span
+              >
             </NuxtLink>
 
             <!-- Profile dropdown -->
