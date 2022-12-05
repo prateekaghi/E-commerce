@@ -1,29 +1,26 @@
 <script setup lang="ts">
 import { useProductsStore } from "~~/store/ProductStore";
+const user = useSupabaseUser();
+const client = useSupabaseAuthClient();
+
+const signOutHandler = function () {
+  client.auth.signOut();
+  menuOpen.value = false;
+};
 
 let menuOpen = ref(false);
 const toggle = () => {
-  menuOpen.value = !menuOpen.value;
+  if (!user.value) {
+    navigateTo("/login");
+  } else {
+    menuOpen.value = !menuOpen.value;
+  }
 };
 const store = useProductsStore();
 console.log(store);
 </script>
 
 <template>
-  <!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
   <nav class="bg-gray-900">
     <div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
@@ -201,22 +198,15 @@ console.log(store);
                   id="user-menu-item-0"
                   >Your Profile</a
                 >
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="user-menu-item-1"
-                  >Settings</a
-                >
-                <a
-                  href="#"
+                <button
+                  @click="signOutHandler"
                   class="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
                   tabindex="-1"
                   id="user-menu-item-2"
-                  >Sign out</a
                 >
+                  Sign out
+                </button>
               </div>
             </div>
           </div>

@@ -1,4 +1,24 @@
-<script setup lang="ts"></script>
+<script setup>
+import { useUserStore } from "~~/store/UserStore";
+const userStore = useUserStore();
+const client = useSupabaseAuthClient();
+const signIndata = reactive({
+  email: "",
+  password: "",
+});
+const signInHandler = async function () {
+  console.log("signin");
+
+  const { data, error } = await client.auth.signInWithPassword({
+    email: signIndata.email,
+    password: signIndata.password,
+  });
+  if (data) {
+    navigateTo("/");
+  }
+  console.log(error);
+};
+</script>
 
 <template>
   <!--
@@ -39,13 +59,19 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <form class="space-y-6" action="#" method="POST">
+        <form
+          @submit.prevent="signInHandler"
+          class="space-y-6"
+          action="#"
+          method="POST"
+        >
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700"
               >Email address</label
             >
             <div class="mt-1">
               <input
+                v-model="signIndata.email"
                 id="email"
                 name="email"
                 type="email"
@@ -64,6 +90,7 @@
             >
             <div class="mt-1">
               <input
+                v-model="signIndata.password"
                 id="password"
                 name="password"
                 type="password"
@@ -118,12 +145,13 @@
 
           <div class="mt-6 gap-3">
             <div>
-              <a
+              <button
+                @click="userStore.toggleLoginCard"
                 href="#"
                 class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
               >
                 <span class="">Sign Up</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>

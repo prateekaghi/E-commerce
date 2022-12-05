@@ -1,6 +1,5 @@
 <script setup>
 const { product } = defineProps(["product"]);
-const { supabase } = useSupabase();
 </script>
 
 <template>

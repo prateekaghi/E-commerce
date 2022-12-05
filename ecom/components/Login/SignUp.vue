@@ -1,28 +1,29 @@
-<script setup lang="ts"></script>
+<script setup>
+import { useUserStore } from "~~/store/UserStore";
+const userStore = useUserStore();
+const client = useSupabaseAuthClient();
+const signUpdata = reactive({
+  email: "",
+  password: "",
+  confirmPassword: "",
+  phone: "",
+});
+
+const signUpHandler = async function () {
+  console.log("signup");
+  if (signUpdata.password !== signUpdata.confirmPassword) return;
+
+  await client.auth.signUp({
+    email: signUpdata.email,
+    password: signUpdata.password,
+    options: {
+      phone: signUpdata.phone,
+    },
+  });
+};
+</script>
 
 <template>
-  <!--
-    This example requires some changes to your config:
-    
-    ```
-    // tailwind.config.js
-    module.exports = {
-      // ...
-      plugins: [
-        // ...
-        require('@tailwindcss/forms'),
-      ],
-    }
-    ```
-  -->
-  <!--
-    This example requires updating your template:
-  
-    ```
-    <html class="h-full bg-gray-50">
-    <body class="h-full">
-    ```
-  -->
   <div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <img
@@ -39,18 +40,36 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <form class="space-y-6" action="#" method="POST">
+        <form
+          @submit.prevent="signUpHandler"
+          class="space-y-6"
+          action="#"
+          method="POST"
+        >
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700"
               >Email address</label
             >
             <div class="mt-1">
               <input
+                v-model="signUpdata.email"
                 id="email"
                 name="email"
                 type="email"
-                autocomplete="email"
-                required
+                class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+              />
+            </div>
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700"
+              >Mobile Number</label
+            >
+            <div class="mt-1">
+              <input
+                v-model="signUpdata.phone"
+                id="phone"
+                name="phone"
+                type="number"
                 class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
             </div>
@@ -64,11 +83,11 @@
             >
             <div class="mt-1">
               <input
+                v-model="signUpdata.password"
                 id="password"
                 name="password"
                 type="password"
                 autocomplete="current-password"
-                required
                 class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
             </div>
@@ -81,11 +100,11 @@
             >
             <div class="mt-1">
               <input
-                id="password"
-                name="password"
+                v-model="signUpdata.confirmPassword"
+                id="confirmPassword"
+                name="confirmPassword"
                 type="password"
                 autocomplete="current-password"
-                required
                 class="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
               />
             </div>
@@ -113,12 +132,13 @@
 
           <div class="mt-6 gap-3">
             <div>
-              <a
+              <button
+                @click="userStore.toggleLoginCard"
                 href="#"
                 class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
               >
                 <span class="">Sign In</span>
-              </a>
+              </button>
             </div>
           </div>
         </div>
