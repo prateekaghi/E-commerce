@@ -18,6 +18,7 @@ console.log(allProducts);
   }
   ```
 -->
+  <DealsSection></DealsSection>
   <div class="bg-white">
     <div
       class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8"
@@ -32,6 +33,7 @@ console.log(allProducts);
           class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
         >
           <div
+            :key="product.id"
             class="aspect-w-3 aspect-h-4 bg-gray-200 group-hover:opacity-75 sm:aspect-none sm:h-96"
           >
             <img
@@ -42,10 +44,10 @@ console.log(allProducts);
           </div>
           <div class="flex flex-1 flex-col space-y-2 p-4">
             <h3 class="text-sm font-medium text-gray-900">
-              <a href="#">
+              <NuxtLink :to="`/products/${product.id}`">
                 <span aria-hidden="true" class="absolute inset-0"></span>
                 {{ product.title }}
-              </a>
+              </NuxtLink>
             </h3>
             <p class="text-sm text-gray-500">
               {{ product.description }}

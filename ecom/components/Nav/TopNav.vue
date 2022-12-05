@@ -42,22 +42,17 @@ const toggle = () => {
               <NuxtLink
                 to="/"
                 class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
-                >Dashboard</NuxtLink
+                >Home</NuxtLink
               >
-              <a
-                href="#"
+              <NuxtLink
+                to="/products"
                 class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 hover:text-white"
-                >Team</a
+                >Products</NuxtLink
               >
-              <a
-                href="#"
+              <NuxtLink
+                to="/categories"
                 class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 hover:text-white"
-                >Projects</a
-              >
-              <a
-                href="#"
-                class="rounded-md px-3 dark:text-cyan-300 py-2 text-sm font-medium text-white hover:bg-gray-700 hover:text-white"
-                >Calendar</a
+                >Categories</NuxtLink
               >
             </div>
           </div>
@@ -231,24 +226,23 @@ const toggle = () => {
         <!-- Current: "bg-gray-900 text-white", Default: "text-white hover:bg-gray-700 hover:text-white" -->
         <NuxtLink
           to="/"
-          href="#"
           class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
           >Home</NuxtLink
         >
-        <a
-          href="#"
+        <NuxtLink
+          to="#"
           class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
-          >Team</a
+          >Team</NuxtLink
         >
-        <a
-          href="#"
+        <NuxtLink
+          to="#"
           class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
-          >Projects</a
+          >Projects</NuxtLink
         >
-        <a
+        <NuxtLink
           href="#"
           class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
-          >Calendar</a
+          >Calendar</NuxtLink
         >
       </div>
       <div class="border-t border-gray-700 pt-4 pb-3">
