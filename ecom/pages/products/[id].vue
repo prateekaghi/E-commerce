@@ -18,5 +18,5 @@ definePageMeta({
 </script>
 
 <template>
-  <ProductsProductCard :product="product"></ProductsProductCard>
+  <ProductsProductDesc :product="product"></ProductsProductDesc>
 </template>
