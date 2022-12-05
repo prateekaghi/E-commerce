@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import { useProductsStore } from "~~/store/ProductStore";
+
 let menuOpen = ref(false);
 const toggle = () => {
   menuOpen.value = !menuOpen.value;
 };
+const store = useProductsStore();
+console.log(store);
 </script>
 
 <template>
