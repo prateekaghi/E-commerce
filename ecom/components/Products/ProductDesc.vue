@@ -197,7 +197,7 @@ const cart = useCartStore();
         <section aria-labelledby="options-heading">
           <h2 id="options-heading" class="sr-only">Product options</h2>
 
-          <form @submit.prevent="cart.addToCart">
+          <form @submit.prevent="cart.addToCart(product)">
             <div class="sm:flex sm:justify-between">
               <!-- Size selector -->
             </div>
