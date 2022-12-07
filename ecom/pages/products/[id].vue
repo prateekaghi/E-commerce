@@ -3,7 +3,7 @@ const { id } = useRoute().params;
 
 const url = "https://fakestoreapi.com/products/" + id;
 
-const { data: product } = await useFetch(url);
+const { data: product } = await useFetch(`/api/singleProduct/${id}`);
 
 if (!product.value) {
   throw createError({
