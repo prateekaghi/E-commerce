@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const { data: categories } = await useFetch(
-  "https://fakestoreapi.com/products/categories"
-);
+const props = defineProps(["categories", "data"]);
 </script>
 
 <template>
@@ -35,15 +33,15 @@ const { data: categories } = await useFetch(
           <div
             class="min-w-screen-xl absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0"
           >
-            <div v-for="category in categories">
+            <div v-for="item in data">
               <NuxtLink
                 to="/"
                 class="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
               >
                 <span aria-hidden="true" class="absolute inset-0">
                   <img
-                    src="https://tailwindui.com/img/ecommerce-images/home-page-01-category-01.jpg"
-                    alt=""
+                    :src="item[0].image"
+                    :alt="item[0].title"
                     class="h-full w-full object-cover object-center"
                   />
                 </span>
@@ -53,7 +51,7 @@ const { data: categories } = await useFetch(
                 ></span>
                 <span
                   class="relative uppercase mt-auto text-center text-xl font-bold text-white"
-                  >{{ category }}</span
+                  >{{ item[0].category }}</span
                 >
               </NuxtLink>
             </div>
