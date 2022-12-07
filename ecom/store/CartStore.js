@@ -6,10 +6,18 @@ export const useCartStore = defineStore("CartStore", {
     totalItems: 0,
     shippingCharges: 0,
     cart: [],
+    totalTax: 0,
   }),
   getters: {
     calculateTax(state) {
-      return (state.cartValue * 0.05).toFixed(2);
+      return (state.totalTax = +(state.cartValue * 0.05).toFixed(2));
+    },
+
+    totalAmount(state) {
+      console.log(state.cartValue);
+      console.log(state.shippingCharges);
+      console.log(state.totalTax);
+      return state.cartValue + state.shippingCharges + state.totalTax;
     },
   },
   actions: {
@@ -19,6 +27,7 @@ export const useCartStore = defineStore("CartStore", {
       } else {
         this.shippingCharges = 30;
       }
+      console.log(item);
       this.totalItems++;
       this.cart.push(item);
       this.cartValue += item.price;

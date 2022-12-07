@@ -48,7 +48,7 @@ console.log(cart.cart);
                     </h3>
                   </div>
                   <div class="mt-1 flex text-sm">
-                    <p class="text-gray-500">Rating {{ item.rating.rate }}</p>
+                    <p class="text-gray-500">Rating {{ item?.rating?.rate }}</p>
 
                     <p class="ml-4 border-l border-gray-200 pl-4 text-gray-500">
                       Large
@@ -208,7 +208,9 @@ console.log(cart.cart);
             class="flex items-center justify-between border-t border-gray-200 pt-4"
           >
             <dt class="text-base font-medium text-gray-900">Order total</dt>
-            <dd class="text-base font-medium text-gray-900">$112.32</dd>
+            <dd class="text-base font-medium text-gray-900">
+              ${{ cart.totalAmount }}
+            </dd>
           </div>
         </dl>
 
