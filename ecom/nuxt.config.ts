@@ -4,5 +4,6 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@pinia/nuxt",
     "@nuxtjs/supabase",
+    "@formkit/nuxt",
   ],
 });

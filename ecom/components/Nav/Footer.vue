@@ -52,30 +52,28 @@
             The latest deals and savings, sent to your inbox weekly.
           </h3>
 
-          <form
+          <FormKit
+            type="form"
             action="https://formeezy.com/api/v1/forms/63922c7f388f6200083fba52/submissions"
             method="POST"
             enctype="multipart/form-data"
+            submit-label="Get Deals"
+            actions-class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
             class="mt-4 flex sm:max-w-md"
           >
             <label for="email" class="sr-only">Email address</label>
-            <input
-              input
+            <FormKit
               type="email"
               name="email"
-              placeholder="Enter email"
-              required
-              class="w-full min-w-0 appearance-none rounded-md border border-white bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
+              label=""
+              outer-class="mb-5 text-red-500"
+              validation="required|email"
+              label-class="text-sm font-medium text-white"
+              message-class="text-cyan-200"
+              inner-class="max-w-md border border-gray-400 rounded-lg mb-1 overflow-hidden focus-within:border-blue-500"
+              input-class="w-full min-w-0 appearance-none rounded-md border border-white bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
             />
-            <div class="ml-4 flex-shrink-0">
-              <button
-                type="submit"
-                class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-900"
-              >
-                Get Deals
-              </button>
-            </div>
-          </form>
+          </FormKit>
         </div>
       </div>
 
