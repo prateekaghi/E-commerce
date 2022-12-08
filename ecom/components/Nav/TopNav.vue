@@ -54,6 +54,11 @@ const cart = useCartStore();
                 class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 hover:text-white"
                 >Categories</NuxtLink
               >
+              <NuxtLink
+                to="/contact-us"
+                class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gray-700 hover:text-white"
+                >Contact Us</NuxtLink
+              >
             </div>
           </div>
         </div>

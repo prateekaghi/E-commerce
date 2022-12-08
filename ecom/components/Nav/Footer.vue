@@ -52,12 +52,18 @@
             The latest deals and savings, sent to your inbox weekly.
           </h3>
 
-          <form class="mt-4 flex sm:max-w-md">
-            <label for="email-address" class="sr-only">Email address</label>
+          <form
+            action="https://formeezy.com/api/v1/forms/63922c7f388f6200083fba52/submissions"
+            method="POST"
+            enctype="multipart/form-data"
+            class="mt-4 flex sm:max-w-md"
+          >
+            <label for="email" class="sr-only">Email address</label>
             <input
-              id="email-address"
-              type="text"
-              autocomplete="email"
+              input
+              type="email"
+              name="email"
+              placeholder="Enter email"
               required
               class="w-full min-w-0 appearance-none rounded-md border border-white bg-white py-2 px-4 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-900"
             />
