@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
   <!--
   This example requires some changes to your config:
@@ -23,7 +25,7 @@
   }
   ```
 -->
-  <div class="bg-white">
+  <div class="bg-[url('/assets/img/contact-background.jpg')] bg-cover">
     <main class="overflow-hidden">
       <!-- Header -->
       <div class="bg-warm-gray-50">
@@ -46,49 +48,14 @@
       </div>
 
       <!-- Contact section -->
-      <section class="relative bg-white" aria-labelledby="contact-heading">
+      <section class="relative" aria-labelledby="contact-heading">
         <div
           class="absolute h-1/2 w-full bg-warm-gray-50"
           aria-hidden="true"
         ></div>
-        <!-- Decorative dot pattern -->
-        <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <svg
-            class="absolute top-0 right-0 z-0 -translate-y-16 translate-x-1/2 transform sm:translate-x-1/4 md:-translate-y-24 lg:-translate-y-72"
-            width="404"
-            height="384"
-            fill="none"
-            viewBox="0 0 404 384"
-            aria-hidden="true"
-          >
-            <defs>
-              <pattern
-                id="64e643ad-2176-4f86-b3d7-f2c5da3b6a6d"
-                x="0"
-                y="0"
-                width="20"
-                height="20"
-                patternUnits="userSpaceOnUse"
-              >
-                <rect
-                  x="0"
-                  y="0"
-                  width="4"
-                  height="4"
-                  class="text-warm-gray-200"
-                  fill="currentColor"
-                />
-              </pattern>
-            </defs>
-            <rect
-              width="404"
-              height="384"
-              fill="url(#64e643ad-2176-4f86-b3d7-f2c5da3b6a6d)"
-            />
-          </svg>
-        </div>
+
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div class="relative bg-white shadow-xl">
+          <div class="relative bg-white opacity-70 shadow-xl">
             <h2 id="contact-heading" class="sr-only">Contact us</h2>
 
             <div class="grid grid-cols-1 lg:grid-cols-3">
@@ -315,124 +282,81 @@
                 <h3 class="text-lg font-medium text-warm-gray-900">
                   Send us a message
                 </h3>
-                <form
+                <FormKit
+                  type="form"
+                  submit-label="Send Enquiry"
+                  actions-class="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-teal-500 px-6 py-3 text-lg font-medium text-white font-bold shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto float-right"
                   action="https://formeezy.com/api/v1/forms/639229ebc86f470008564e63/submissions"
                   method="POST"
                   enctype="multipart/form-data"
                   class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8"
                 >
-                  <div>
-                    <label
-                      for="first-name"
-                      class="block text-sm font-medium text-warm-gray-900"
-                      >First name</label
-                    >
-                    <div class="mt-1">
-                      <input
-                        type="text"
-                        name="first-name"
-                        id="first-name"
-                        autocomplete="given-name"
-                        class="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-teal-500 focus:ring-teal-500"
-                      />
-                    </div>
+                  <div class="grid grid-cols-2 gap-1">
+                    <FormKit
+                      type="text"
+                      label="First Name"
+                      validation="required"
+                      message-class="text-red-500"
+                      input-class=" block w-full flex rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-teal-500 focus:ring-teal-500"
+                    />
+                    <FormKit
+                      type="text"
+                      label="Last Name"
+                      validation="required"
+                      message-class="text-red-500"
+                      input-class=" block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-teal-500 focus:ring-teal-500"
+                    />
                   </div>
-                  <div>
-                    <label
-                      for="last-name"
-                      class="block text-sm font-medium text-warm-gray-900"
-                      >Last name</label
-                    >
-                    <div class="mt-1">
-                      <input
-                        type="text"
-                        name="last-name"
-                        id="last-name"
-                        autocomplete="family-name"
-                        class="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-teal-500 focus:ring-teal-500"
-                      />
-                    </div>
+                  <div class="grid grid-cols-2 gap-1">
+                    <FormKit
+                      type="text"
+                      label="E-mail"
+                      validation="required|email"
+                      message-class="text-red-500"
+                      input-class=" block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-teal-500 focus:ring-teal-500"
+                    />
+                    <FormKit
+                      type="tel"
+                      label="Phone number"
+                      validation="required|matches:/^[0-9]{10}$/"
+                      message-class="text-red-500"
+                      input-class=" block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-teal-500 focus:ring-teal-500"
+                      :validation-messages="{
+                        matches: 'Phone number must be a 10 Digit Number',
+                      }"
+                      validation-visibility="dirty"
+                    />
                   </div>
-                  <div>
-                    <label
-                      for="email"
-                      class="block text-sm font-medium text-warm-gray-900"
-                      >Email</label
-                    >
-                    <div class="mt-1">
-                      <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        autocomplete="email"
-                        class="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-teal-500 focus:ring-teal-500"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div class="flex justify-between">
-                      <label
-                        for="phone"
-                        class="block text-sm font-medium text-warm-gray-900"
-                        >Phone</label
-                      >
-                    </div>
-                    <div class="mt-1">
-                      <input
-                        type="text"
-                        name="phone"
-                        id="phone"
-                        autocomplete="tel"
-                        class="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-teal-500 focus:ring-teal-500"
-                        aria-describedby="phone-optional"
-                      />
-                    </div>
+
+                  <div class="sm:col-span-2">
+                    <FormKit
+                      type="textarea"
+                      label="Subject"
+                      rows="1"
+                      validation="required|length:5,30"
+                      message-class="text-red-500"
+                      input-class="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-teal-500 focus:ring-teal-500"
+                    />
                   </div>
                   <div class="sm:col-span-2">
-                    <label
-                      for="subject"
-                      class="block text-sm font-medium text-warm-gray-900"
-                      >Subject</label
-                    >
-                    <div class="mt-1">
-                      <input
-                        type="text"
-                        name="subject"
-                        id="subject"
-                        class="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-teal-500 focus:ring-teal-500"
-                      />
-                    </div>
+                    <FormKit
+                      type="textarea"
+                      label="Message"
+                      rows="4"
+                      validation="required|length:5,500"
+                      message-class="text-red-500"
+                      input-class="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-teal-500 focus:ring-teal-500"
+                    />
                   </div>
-                  <div class="sm:col-span-2">
-                    <div class="flex justify-between">
-                      <label
-                        for="message"
-                        class="block text-sm font-medium text-warm-gray-900"
-                        >Message</label
-                      >
-                      <span id="message-max" class="text-sm text-warm-gray-500"
-                        >Max. 500 characters</span
-                      >
-                    </div>
-                    <div class="mt-1">
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows="4"
-                        class="block w-full rounded-md border-warm-gray-300 py-3 px-4 text-warm-gray-900 shadow-sm focus:border-teal-500 focus:ring-teal-500"
-                        aria-describedby="message-max"
-                      ></textarea>
-                    </div>
-                  </div>
-                  <div class="sm:col-span-2 sm:flex sm:justify-end">
+                  <!-- <div class="sm:col-span-2 sm:flex sm:justify-end">
                     <button
                       type="submit"
                       class="mt-2 inline-flex w-full items-center justify-center rounded-md border border-transparent bg-teal-500 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-teal-600 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2 sm:w-auto"
                     >
                       Submit
                     </button>
-                  </div>
-                </form>
+                  </div> -->
+                </FormKit>
               </div>
             </div>
           </div>
