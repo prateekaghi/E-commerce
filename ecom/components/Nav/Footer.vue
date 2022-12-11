@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
   <footer aria-labelledby="footer-heading" class="bg-gray-900">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
@@ -39,9 +41,12 @@
               <h3 class="text-sm font-medium text-white">Connect</h3>
               <ul role="list" class="mt-6 space-y-6">
                 <li class="text-sm">
-                  <a href="#" class="text-gray-300 hover:text-white"
-                    >Contact Us</a
+                  <NuxtLink
+                    target="_blank"
+                    to="https://api.whatsapp.com/send?phone=919416120900"
                   >
+                    <Icon name="mdi:whatsapp" class="text-green-500 h-6 w-6"
+                  /></NuxtLink>
                 </li>
               </ul>
             </div>

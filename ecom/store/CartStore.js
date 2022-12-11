@@ -27,17 +27,17 @@ export const useCartStore = defineStore("CartStore", {
       } else {
         this.shippingCharges = 30;
       }
-      console.log(item);
       this.totalItems++;
       this.cart.push(item);
       this.cartValue += item.price;
     },
     removeItem(item) {
       this.totalItems--;
+      this.calculateTax();
       const itmIndex = this.cart.findIndex((e) => {
         return e.id === item.id;
       });
-      this.cart.slice(itmIndex, 1);
+      this.cart.splice(itmIndex, 1);
     },
   },
 });
